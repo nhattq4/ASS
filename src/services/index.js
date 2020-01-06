@@ -15,7 +15,7 @@ class ServicesIndex {
         this.app.use(ROOT_ROUTE + '/user', user);
         this.app.use(ROOT_ROUTE + '/role', role);
         this.app.use(ROOT_ROUTE + '/company', company);
-        this.app.use(ROOT_ROUTE + '/monitor', monitor);
+        // this.app.use(ROOT_ROUTE + '/monitor', monitor);
         this.app.use(ROOT_ROUTE + '/claim', claim);
         this.app.use(ROOT_ROUTE + '/parentCompany', parentCompany);
     }

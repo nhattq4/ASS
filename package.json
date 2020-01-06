@@ -1,7 +1,7 @@
 {
-    "name": "ecs_auth",
+    "name": "ass",
     "version": "1.0.0",
-    "description": "Authentication API Service",
+    "description": "API Service",
     "main": "./src/server.js",
     "scripts": {
         "sequelize": "sequelize --options-path=src/database/sequelize.config.json",
@@ -11,10 +11,10 @@
         "test": "npm test"
     },
     "keywords": [
-        "ECS"
+        "ASS"
     ],
-    "author": "truonglam.nguyen@tanchonggroup.com",
-    "license": "TC",
+    "author": "",
+    "license": "",
     "dependencies": {
         "@google-cloud/storage": "^3.2.1",
         "app-root-path": "^2.2.1",
