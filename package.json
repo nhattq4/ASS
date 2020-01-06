@@ -1,0 +1,39 @@
+{
+    "name": "ecs_auth",
+    "version": "1.0.0",
+    "description": "Authentication API Service",
+    "main": "./src/server.js",
+    "scripts": {
+        "sequelize": "sequelize --options-path=src/database/sequelize.config.json",
+        "debug": "node inspect ./src/server.js",
+        "start": "node ./src/server.js",
+        "dev": "cross-env NODE_ENV=development node ./src/server.js",
+        "test": "npm test"
+    },
+    "keywords": [
+        "ECS"
+    ],
+    "author": "truonglam.nguyen@tanchonggroup.com",
+    "license": "TC",
+    "dependencies": {
+        "@google-cloud/storage": "^3.2.1",
+        "app-root-path": "^2.2.1",
+        "compression": "^1.7.4",
+        "config": "^3.2.2",
+        "cors": "^2.8.5",
+        "cross-env": "^6.0.3",
+        "express": "^4.17.1",
+        "express-swagger-generator": "^1.1.15",
+        "express-winston": "^3.3.0",
+        "mysql2": "^1.7.0",
+        "nodemon": "^1.19.4",
+        "sequelize": "^5.18.1",
+        "sequelize-cli": "^5.5.1",
+        "sqlite3": "^4.1.0",
+        "swagger-ui-express": "^4.0.7",
+        "winston": "^3.2.1"
+    },
+    "devDependencies": {
+        "eslint": "^6.3.0"
+    }
+}

@@ -1,0 +1,6 @@
+{
+  "recreateDB": false,
+  "db": {
+    "name": "ass-service"
+  }
+}
