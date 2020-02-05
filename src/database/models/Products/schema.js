@@ -17,6 +17,9 @@ module.exports = () => {
             type: Sequelize.TINYINT(1),
             defaultValue: 1
         },
+        parentProductId: {
+            type: Sequelize.INTEGER(11),
+        },
         createdBy: {
             type: Sequelize.STRING(20),
         },

@@ -19,9 +19,9 @@ class Db {
                 UserParentCompanies: require('./models/userParentCompanies').init(sequelize),
                 ParentCompany: require('./models/parentCompany').init(sequelize),
                 Company: require('./models/company').init(sequelize),
-                UsersNew : require('./models/users_new').init(sequelize),
-                Products : require('./models/Products').init(sequelize),
-                ParentProducts : require('./models/parent_products').init(sequelize),
+                UsersNew: require('./models/users_new').init(sequelize),
+                Products: require('./models/products').init(sequelize),
+                ParentProducts: require('./models/parentProduct').init(sequelize),
             };
 
             // Create relationships in the ORM
