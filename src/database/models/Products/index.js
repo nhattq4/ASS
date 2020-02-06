@@ -1,8 +1,8 @@
-const Sequelize = require('sequelize');
+const Sequelize = require('./node_modules/sequelize');
 const schema = require('./schema');
 const tableName = 'products';
 const modelName = 'products';
-var _ = require('lodash');
+var _ = require('./node_modules/lodash');
 module.exports = class Products extends Sequelize.Model {
     static init(sequelize) {
         return super.init(schema(), {

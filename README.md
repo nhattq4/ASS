@@ -1,6 +1,6 @@
-# ECS Authentication service
+# ASS Authentication service
 
-This service is used to handle authentication and authorization for ECS application.
+This service is used to handle authentication and authorization for ASS application.
 This API is secured using Bearer Authentication.
 
 ## Convention
