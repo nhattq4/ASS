@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const schema = require('./schema');
-const tableName = 'parentCompanies';
-const modelName = 'parentCompanies';
+const tableName = 'parent_companies';
+const modelName = 'parent_companies';
 var _ = require('lodash');
 module.exports = class ParentCompanies extends Sequelize.Model {
     static init(sequelize) {
