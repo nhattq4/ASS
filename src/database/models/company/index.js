@@ -3,7 +3,7 @@ const schema = require('./schema');
 const tableName = 'companies';
 const modelName = 'companies';
 var _ = require('lodash');
-module.exports = class Roles extends Sequelize.Model {
+module.exports = class Companies extends Sequelize.Model {
     static init(sequelize) {
         return super.init(schema(), {
             tableName,

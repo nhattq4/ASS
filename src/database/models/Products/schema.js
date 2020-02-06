@@ -8,23 +8,26 @@ module.exports = () => {
             autoIncrement: true
         },
         name: {
-            type: Sequelize.STRING(50)
+            type: Sequelize.STRING(50),
         },
         description: {
-            type: Sequelize.STRING(100)
+            type: Sequelize.STRING(100),
         },
         isActive: {
             type: Sequelize.TINYINT(1),
             defaultValue: 1
         },
+        parentProductId: {
+            type: Sequelize.INTEGER(11),
+        },
         createdBy: {
-            type: Sequelize.STRING(20)
+            type: Sequelize.STRING(20),
         },
         createdAt: {
             type: Sequelize.DATE
         },
         updatedBy: {
-            type: Sequelize.STRING(20)
+            type: Sequelize.STRING(20),
         },
         updatedAt: {
             type: Sequelize.DATE

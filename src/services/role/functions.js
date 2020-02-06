@@ -2,8 +2,6 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const Db = require('../../database/db');
 const Roles = require('../../database/models/roles');
-const RoleClaims = require('../../database/models/roleClaims');
-const Claims = require('../../database/models/claims');
 
 const _ = require('lodash');
 const utils = require('../../utils/utils');
@@ -16,7 +14,7 @@ const STATUS = {
     DELETED: 'DELETED'
 };
 
-search = async(req, res, next) => {
+search = async (req, res, next) => {
     let { page, limit, pagination, order, search, filter } = req.body;
     let whereConditions = [...utils.generateSearchQuery(search), ...utils.generateFilterQuery(filter)];
     let where;
@@ -106,7 +104,7 @@ update = async (req, res, next) => {
                 if (claim.status == STATUS.ADDED) {
                     return RoleClaims.create({ roleId: rolePayload.id, claimId: claim.id }, { transaction: t });
                 } else if (role.status == STATUS.DELETED) {
-                    return RoleClaims.destroy({ where: { roleId: rolePayload.id, claimId: claim.id }}, { transaction: t });
+                    return RoleClaims.destroy({ where: { roleId: rolePayload.id, claimId: claim.id } }, { transaction: t });
                 }
             });
 
@@ -154,7 +152,7 @@ validate = async (type, data) => {
             return errorHandler.ROLE_WAS_EXISTED;
         }
     }
-    
+
     if (type === 'update') {
         let isExistedRole = await Roles.get({ id: data.role.id });
         if (!isExistedRole) {

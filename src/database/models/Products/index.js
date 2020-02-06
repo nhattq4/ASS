@@ -1,10 +1,9 @@
 const Sequelize = require('sequelize');
 const schema = require('./schema');
-const tableName = 'claims';
-const modelName = 'claims';
-
+const tableName = 'products';
+const modelName = 'products';
 var _ = require('lodash');
-module.exports = class Claims extends Sequelize.Model {
+module.exports = class Products extends Sequelize.Model {
     static init(sequelize) {
         return super.init(schema(), {
             tableName,
@@ -13,12 +12,7 @@ module.exports = class Claims extends Sequelize.Model {
             timestamps: false
         });
     }
-
     static associate(models) {
-        this.belongsToMany(models.Roles, {
-            through: models.RoleClaims,
-            as: 'roles',
-            foreignKey: 'claimId'
-        });
+        this.belongsTo(models.ParentProducts, { foreignKey: 'parentProductId', targetKey: 'id' });
     }
 };
