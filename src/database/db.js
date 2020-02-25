@@ -11,14 +11,15 @@ class Db {
 
             // Init models
             const models = {
-                Roles: require('./models/roles').init(sequelize),
-                UserRoles: require('./models/userRoles').init(sequelize),
-                Users: require('./models/users').init(sequelize),
-                UserParentCompanies: require('./models/userParentCompanies').init(sequelize),
-                ParentCompany: require('./models/parentCompany').init(sequelize),
+                //Companies
+                EmployeeCompanies: require('./models/employeeCompanies').init(sequelize),
                 Company: require('./models/company').init(sequelize),
-                Products: require('./models/products').init(sequelize),
-                ParentProducts: require('./models/parentProduct').init(sequelize),
+
+                //employee
+                Roles: require('./models/roles').init(sequelize),
+                EmployeeRoles: require('./models/employeeRoles').init(sequelize),
+                Employees: require('./models/employees').init(sequelize),
+
             };
 
             // Create relationships in the ORM

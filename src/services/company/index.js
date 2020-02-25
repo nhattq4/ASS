@@ -12,8 +12,8 @@ const functions = require('./functions');
  * @returns {Array.<CompanyData>} 200 - successful operation
  * @returns {Error.model} 404 - Parent company not found error message
  */
-router.param('userId', functions.validateUserId);
-router.get('/get-by-userId/:userId', (req, res, next) => functions.getByUserId(req, res, next).catch(error => next(error)));
+router.param('userId', functions.validateEmployeeId);
+router.get('/get-by-userId/:userId', (req, res, next) => functions.getByEmployeeIdByUserId(req, res, next).catch(error => next(error)));
 
 /**
  * Get parent company data by username

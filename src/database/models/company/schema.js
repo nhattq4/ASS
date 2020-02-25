@@ -3,9 +3,8 @@ const Sequelize = require('sequelize');
 module.exports = () => {
     return {
         id: {
-            type: Sequelize.INTEGER(11),
+            type: Sequelize.STRING(250),
             primaryKey: true,
-            autoIncrement: true,
         },
         parentCompanyId: {
             type: Sequelize.INTEGER(11),
@@ -18,10 +17,6 @@ module.exports = () => {
         },
         letterhead: {
             type: Sequelize.STRING(25)
-        },
-        compRegistrationNo: {
-            type: Sequelize.TINYINT(1),
-            defaultValue: 0
         },
         imgPath: {
             type: Sequelize.STRING(150),
@@ -38,41 +33,6 @@ module.exports = () => {
         email: {
             type: Sequelize.STRING(45)
         },
-        isClaimConfirmation: {
-            type: Sequelize.TINYINT(1)
-        },
-        bizStream: {
-            type: Sequelize.STRING(20)
-        },
-        costCentre: {
-            type: Sequelize.STRING(20)
-        },
-        branchCode: {
-            type: Sequelize.STRING(20)
-        },
-        projectCode: {
-            type: Sequelize.STRING(20)
-        },
-        isReqBizstream: {
-            type: Sequelize.TINYINT(1),
-            defaultValue: 0
-        },
-        isReqCostcentre: {
-            type: Sequelize.TINYINT(1),
-            defaultValue: 0
-        },
-        isReqBrancode: {
-            type: Sequelize.TINYINT(1),
-            defaultValue: 0
-        },
-        isReqProjectcode: {
-            type: Sequelize.TINYINT(1),
-            defaultValue: 0
-        },
-        isCostCentreDepartment: {
-            type: Sequelize.TINYINT(1),
-            defaultValue: 0
-        },
         isReactivate: {
             type: Sequelize.TINYINT(1),
             defaultValue: 0
@@ -80,9 +40,13 @@ module.exports = () => {
         inactiveDatetime: {
             type: Sequelize.DATE
         },
-        isRollout: {
+        isDefaultCompany:
+        {
             type: Sequelize.TINYINT(1),
-            defaultValue: 0
+        },
+        isDefaultLoginCompany:
+        {
+            type: Sequelize.TINYINT(1),
         },
         isDeleted: {
             type: Sequelize.TINYINT(1),

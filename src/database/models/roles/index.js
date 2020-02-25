@@ -14,7 +14,7 @@ module.exports = class Roles extends Sequelize.Model {
     }
 
     static associate(models) {
-        this.belongsToMany(models.Users, { through: models.UserRoles, as: 'users', foreignKey: 'roleId' });
+        this.belongsToMany(models.Employees, { through: models.EmployeeRoles, as: 'employees', foreignKey: 'roleId' });
     }
 
     static get(where) {

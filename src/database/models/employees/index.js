@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize');
 const schema = require('./schema');
-const tableName = 'users';
-const modelName = 'users';
+const tableName = 'employees';
+const modelName = 'employees';
 var _ = require('lodash');
-module.exports = class Users extends Sequelize.Model {
+module.exports = class Employees extends Sequelize.Model {
     static init(sequelize) {
         return super.init(schema(), {
             tableName,
@@ -14,9 +14,9 @@ module.exports = class Users extends Sequelize.Model {
 
     static associate(models) {
         this.belongsToMany(models.Roles, {
-            through: models.UserRoles,
+            through: models.EmployeeRoles,
             as: 'roles',
-            foreignKey: 'userId'
+            foreignKey: 'employeeId'
         });
     }
 
@@ -26,9 +26,7 @@ module.exports = class Users extends Sequelize.Model {
         });
     }
 
-    static async updateUser(data, where, transaction) {
-        // data['updatedBy'] = updatedBy
-        // data['updatedAt'] = updatedAt
+    static async updateEmployee(data, where, transaction) {
         return await this.update(data, {
             where,
             transaction
@@ -37,7 +35,7 @@ module.exports = class Users extends Sequelize.Model {
         });
     }
 
-    static getUsers(pagination, order, where, attributes) {
+    static getEmployees(pagination, order, where, attributes) {
         return this.findAndCountAll({
             where,
             ...pagination,

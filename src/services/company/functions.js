@@ -1,16 +1,16 @@
-const UserParentCompanies = require('../../database/models/userParentCompanies');
-const Users = require('../../database/models/users');
+const EmployeeCompanies = require('../../database/models/EmployeeCompanies');
+const Employees = require('../../database/models/Employees');
 
 const _ = require('lodash');
 const utils = require('../../utils/utils');
 const errorHandler = require('../../utils/errorHandler');
 const attributes = require('../../utils/attributes');
 
-validateUserId = async (req, res, next, userId) => {
+validateEmployeeId = async (req, res, next, employeeId) => {
     const where = {
-        userId
+        employeeId
     };
-    const company = await UserParentCompanies.get(where);
+    const company = await EmployeeCompanies.get(where);
 
     if (!company) {
         return res.status(404).send(errorHandler.COMPANY_NOT_FOUND);
@@ -20,12 +20,12 @@ validateUserId = async (req, res, next, userId) => {
     next();
 };
 
-getByUserId = async (req, res, next) => {
+getByEmployeeId = async (req, res, next) => {
     const where = {
-        userId: req.params.userId
+        employeeId: req.params.employeeId
     };
 
-    const companies = await UserParentCompanies.getByUserId(where, attributes.COMPANY);
+    const companies = await EmployeeCompanies.getByEmployeeId(where, attributes.COMPANY);
 
     res.json(companies);
 };
@@ -35,25 +35,25 @@ getByUsername = async (req, res, next) => {
         username: req.body.username
     };
 
-    const user = await Users.findOne({
+    const employee = await Employees.findOne({
         where
     });
 
-    if (!user) {
+    if (!employee) {
         return res.status(404).send(errorHandler.USER_NOT_FOUND);
     }
 
     where = {
-        userId: user.id
+        employeeId: employee.id
     };
 
-    const companies = await UserParentCompanies.getByUserId(where, attributes.COMPANY);
+    const companies = await EmployeeCompanies.getByUserId(where, attributes.COMPANY);
 
     res.json(companies);
 };
 
 module.exports = {
-    validateUserId,
-    getByUserId,
+    validateEmployeeId,
+    getByEmployeeId,
     getByUsername
 };

@@ -3,11 +3,10 @@ const Sequelize = require('sequelize');
 module.exports = () => {
     return {
         id: {
-            type: Sequelize.INTEGER(11),
+            type: Sequelize.STRING(250),
             primaryKey: true,
-            autoIncrement: true
         },
-        userId: {
+        employeeId: {
             type: Sequelize.INTEGER(11),
             allowNull: false
         },

@@ -3,9 +3,8 @@ const Sequelize = require('sequelize');
 module.exports = () => {
     return {
         id: {
-            type: Sequelize.INTEGER(11),
+            type: Sequelize.STRING(250),
             primaryKey: true,
-            autoIncrement: true
         },
         name: {
             type: Sequelize.STRING(50)
@@ -13,13 +12,13 @@ module.exports = () => {
         description: {
             type: Sequelize.STRING(100)
         },
-        bypassClaim: {
-            type: Sequelize.TINYINT(1),
-            defaultValue: 0
-        },
         isActive: {
             type: Sequelize.TINYINT(1),
             defaultValue: 1
+        },
+        isDeleted: {
+            type: Sequelize.TINYINT(1),
+            defaultValue: 0
         },
         createdBy: {
             type: Sequelize.STRING(20)

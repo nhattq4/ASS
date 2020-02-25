@@ -39,10 +39,10 @@ sequelize-auto -o "./models" -d dbtest -h localhost -u my_username -p 5432 -x my
 
 Generate all tables:
 ```bash
-sequelize-auto -h localhost -d ecs -u root -x root -p 3307 -e mysql -o src/models
+sequelize-auto -h localhost -d ecs -u root -x root -p 3306 -e mysql -o src/models
 ```
 
 Generate specified tables:
 ```bash
-sequelize-auto -h localhost -d ecs -u root -x root -p 3307 -e mysql -o src/models -t [Comma-separated table names]
+sequelize-auto -h localhost -d ecs -u root -x root -p 3306 -e mysql -o src/models -t [Comma-separated table names]
 ```

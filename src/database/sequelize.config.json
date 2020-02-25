@@ -1,5 +1,5 @@
 {
-    "config": "config/config.js",
+    "config": "config/config.json",
     "migrations-path": "src/database/migrations",
     "models-path": "src/database/models"
 }

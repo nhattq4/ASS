@@ -3,14 +3,13 @@ const Sequelize = require('sequelize');
 module.exports = () => {
     return {
         id: {
-            type: Sequelize.INTEGER(11),
+            type: Sequelize.STRING(250),
             primaryKey: true,
-            autoIncrement: true
         },
-        employeeId: {
-            type: Sequelize.STRING(20)
+        employeeCode: {
+            type: Sequelize.STRING(50)
         },
-        username: {
+        password: {
             type: Sequelize.STRING(50)
         },
         fullName: {
@@ -25,6 +24,10 @@ module.exports = () => {
         isActive: {
             type: Sequelize.TINYINT(1),
             defaultValue: 1
+        },
+        isDeleted: {
+            type: Sequelize.TINYINT(1),
+            defaultValue: 0
         },
         createdBy: {
             type: Sequelize.STRING(20)

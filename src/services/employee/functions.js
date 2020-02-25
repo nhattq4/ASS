@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const Db = require('../../database/db');
-const Users = require('../../database/models/users');
-const UserParentCompanies = require('../../database/models/userParentCompanies');
-const UserRoles = require('../../database/models/userRoles');
+const Employees = require('../../database/models/employees');
+const EmployeeCompanies = require('../../database/models/employeeCompanies');
+const EmployeeRoles = require('../../database/models/employeeRoles');
 
 const _ = require('lodash');
 const utils = require('../../utils/utils');
@@ -26,28 +26,28 @@ search = async (req, res, next) => {
         };
     }
 
-    const { users, error } = await Users.getUsers(pagination, order, where, attributes.USER)
-        .then(users => ({ users }))
+    const { employees, error } = await Employee.getEmployees(pagination, order, where, attributes.EMPLOYEE)
+        .then(employees => ({ employee }))
         .catch(error => ({ error }));
 
     if (error) {
         return res.status(errorHandler.INVALID_PARAMETER.status).send(errorHandler.INVALID_PARAMETER);
     }
 
-    users.page = page;
-    users.limit = limit;
-    users.order = order;
-    res.json(users);
+    employees.page = page;
+    employees.limit = limit;
+    employees.order = order;
+    res.json(employees);
 };
 
 create = async (req, res, next) => {
     // data transform
-    let { user, userParentCompanies = [], roles = [] } = req.body;
-    let userPayload = {
-        employeeId: user.employeeId,
-        fullName: user.fullName,
-        email: user.email,
-        isActive: user.isActive
+    let { employee, employeeCompanies = [], roles = [] } = req.body;
+    let employeePayload = {
+        employeeId: employee.employeeId,
+        fullName: employee.fullName,
+        email: employee.email,
+        isActive: employee.isActive
     };
 
     // validation
@@ -57,45 +57,45 @@ create = async (req, res, next) => {
     }
 
     // Process
-    return await Users.sequelize
+    return await Employees.sequelize
         .transaction(async t => {
-            let createdUser = await Users.create(userPayload, { transaction: t });
-            let userParentCompaniesPayload = userParentCompanies.map(company => {
+            let createdEmployee = await Employees.create(employeePayload, { transaction: t });
+            let employeeCompaniesPayload = employeeCompanies.map(company => {
                 return {
-                    userId: createdUser.id,
+                    employeeId: createdEmployee.id,
                     parentCompanyId: company.parentCompanyId,
-                    parentCompanyName: company.parentCompanyName,
                     companyId: company.companyId,
-                    companyName: company.companyName,
                     isDefaultCompany: company.isDefaultCompany ? 1 : 0,
                     isDefaultLoginCompany: company.isDefaultLoginCompany ? 1 : 0,
-                    isActive: 1
+                    isActive: 1,
+                    isDeleted: 0
                 };
             });
-            let userRolesPayload = roles.map(role => {
+            let employeeRolesPayload = roles.map(role => {
                 return {
-                    userId: createdUser.id,
+                    employeeId: createdEmployee.id,
                     roleId: role.id
                 };
             });
-            await UserParentCompanies.bulkCreate(userParentCompaniesPayload, { transaction: t });
-            await UserRoles.bulkCreate(userRolesPayload, { transaction: t });
+            await EmployeeCompanies.bulkCreate(employeeCompaniesPayload, { transaction: t });
+            await EmployeeRoles.bulkCreate(employeeRolesPayload, { transaction: t });
 
-            return { user, userParentCompanies, roles };
+            return { employee, employeeCompanies, roles };
         })
         .then(payload => res.json({ code: 200, message: 'successfully', payload }))
         .catch(() => res.status(errorHandler.CREATE_FAILED.status).send(errorHandler.CREATE_FAILED));
 };
 
 update = async (req, res, next) => {
-    let { user, userParentCompanies = [], roles = [] } = req.body;
-    let userPayload = {
-        id: user.id,
-        employeeId: user.employeeId,
-        username: user.username,
-        fullName: user.fullName,
-        email: user.email,
-        isActive: user.isActive
+    let { employee, employeeCompanies = [], roles = [] } = req.body;
+    let employeePayload = {
+        id: employee.id,
+        employeeCode: employee.employeeCode,
+        username: employee.username,
+        fullName: employee.fullName,
+        email: employeeuser.email,
+        isActive: employee.isActive,
+        isDeleted: employee.isDeleted
     };
 
     let error = validate('update', req.body);
@@ -103,44 +103,44 @@ update = async (req, res, next) => {
         return res.status(error.status).send(error);
     }
 
-    return await Users.sequelize
+    return await Employees.sequelize
         .transaction(async t => {
 
-            let listPromiseUserParentCompanies = userParentCompanies.map(company => {
+            let listPromiseEmployeeCompanies = employeeCompanies.map(company => {
                 if (company.status == STATUS.ADDED) {
-                    return UserParentCompanies.create(
+                    return EmployeeParentCompanies.create(
                         {
                             ...company,
-                            userId: userPayload.id
+                            employeeId: employeePayload.id
                         },
                         {
                             where: {
-                                userId: userPayload.id,
+                                employeeId: employeePayload.id,
                                 companyId: company.companyId
                             },
                             transaction: t
                         });
-                } 
-                
+                }
+
                 if (company.status == STATUS.UPDATED) {
-                    return UserParentCompanies.update(
+                    return EmployeeParentCompanies.update(
                         {
                             isDefaultCompany: company.isDefaultCompany ? 1 : 0,
                             isDefaultLoginCompany: company.isDefaultLoginCompany ? 1 : 0
                         },
                         {
                             where: {
-                                userId: userPayload.id,
+                                employeeId: employeePayload.id,
                                 companyId: company.companyId
                             },
                             transaction: t
                         });
-                } 
-                
+                }
+
                 if (company.status == STATUS.DELETED) {
-                    return UserParentCompanies.destroy({
+                    return EmployeeCompanies.destroy({
                         where: {
-                            userId: userPayload.id,
+                            employeeId: employeePayload.id,
                             companyId: company.companyId
                         },
                         transaction: t
@@ -150,20 +150,20 @@ update = async (req, res, next) => {
 
             let listPromiseRoles = roles.map(role => {
                 if (role.status == STATUS.ADDED) {
-                    return UserRoles.create(
+                    return EmployeeRoles.create(
                         {
-                            userId: userPayload.id,
+                            employeeId: employeePayload.id,
                             roleId: role.id
                         },
                         { transaction: t }
                     );
-                } 
-                
+                }
+
                 if (role.status == STATUS.DELETED) {
-                    return UserRoles.destroy(
+                    return EmployeeRoles.destroy(
                         {
                             where: {
-                                userId: userPayload.id,
+                                employeeId: employeePayload.id,
                                 roleId: role.id
                             }
                         },
@@ -172,11 +172,11 @@ update = async (req, res, next) => {
                 }
             });
 
-            await Users.updateUser(userPayload, { employeeId: user.employeeId }, t);
-            await Promise.all(listPromiseUserParentCompanies);
+            await Employees.updateEmployee(employeePayload, { employeeId: employee.employeeId }, t);
+            await Promise.all(listPromiseEmployeeCompanies);
             await Promise.all(listPromiseRoles);
 
-            return { user, userParentCompanies, roles };
+            return { employee, employeeCompanies, roles };
         })
         .then(payload => res.json({ code: 200, message: 'successfully', payload }))
         .catch(() => res.status(errorHandler.UPDATE_FAILED.status).send(errorHandler.UPDATE_FAILED));
@@ -222,7 +222,7 @@ updateEmailByEmployee = async (req, res, next) => {
         fullName: employeeName,
         username: { [Op.or]: ['', null] }
     };
-    
+
     const updatedUser = await Users.updateUser(data, where, null);
     if (!updatedUser) {
         return res.status(errorHandler.UPDATE_FAILED.status).send(errorHandler.UPDATE_FAILED);
@@ -238,7 +238,7 @@ validate = async (type, data) => {
         data.user.email,
         data.user.isActive
     ];
-    
+
     let validationResult = errorHandler.validate(fields);
     if (validationResult) {
         return errorHandler.INVALID_PARAMETER;
@@ -254,7 +254,7 @@ validate = async (type, data) => {
             return errorHandler.USER_WAS_EXISTED;
         }
     }
-    
+
     if (type === 'update') {
         let isExistedEmployee = await Users.get({ employeeId: data.user.employeeId });
         if (!isExistedEmployee) {

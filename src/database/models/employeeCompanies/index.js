@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize');
 const schema = require('./schema');
-const tableName = 'user_parent_companies';
-const modelName = 'user_parent_companies';
+const tableName = 'employee_companies';
+const modelName = 'employee_companies';
 var _ = require('lodash');
-module.exports = class UserParentCompanies extends Sequelize.Model {
+module.exports = class EmployeeCompanies extends Sequelize.Model {
     static init(sequelize) {
         return super.init(schema(), {
             tableName,
@@ -13,7 +13,7 @@ module.exports = class UserParentCompanies extends Sequelize.Model {
         });
     }
 
-    static associate(models) {}
+    static associate(models) { }
 
     static get(where) {
         return this.findOne({
@@ -21,7 +21,7 @@ module.exports = class UserParentCompanies extends Sequelize.Model {
         });
     }
 
-    static getByUserId(where, attributes) {
+    static getByEmployeeId(where, attributes) {
         return this.findAll({
             where,
             attributes

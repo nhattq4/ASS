@@ -3,26 +3,37 @@ const Sequelize = require('sequelize');
 module.exports = () => {
     return {
         id: {
-            type: Sequelize.INTEGER(11),
+            type: Sequelize.STRING(250),
             primaryKey: true,
-            autoIncrement: true,
         },
-        name: {
-            type: Sequelize.STRING(100)
+        employeeId: {
+            type: Sequelize.INTEGER(11),
+            allowNull: false
         },
-        letterhead: {
-            type: Sequelize.STRING(25)
+        parentCompanyId: {
+            type: Sequelize.INTEGER(11),
+            allowNull: false
         },
-        imgPath: {
-            type: Sequelize.STRING(150),
+        companyId: {
+            type: Sequelize.INTEGER(11),
+            allowNull: false,
+            unique: true
         },
-        isDeleted: {
+        isDefaultCompany: {
+            type: Sequelize.TINYINT(1),
+            defaultValue: 0
+        },
+        isDefaultLoginCompany: {
             type: Sequelize.TINYINT(1),
             defaultValue: 0
         },
         isActive: {
             type: Sequelize.TINYINT(1),
             defaultValue: 1
+        },
+        isDelete: {
+            type: Sequelize.TINYINT(1),
+            defaultValue: 0
         },
         createdBy: {
             type: Sequelize.STRING(20)

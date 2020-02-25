@@ -1,9 +1,15 @@
 module.exports = {
-    TENANT_NOT_FOUND: {
-        status: 400,
+    TENANT_WAS_EXISTED: {
+        status: 404,
         code: 'TENANT_NOT_FOUND',
+        message: 'Tenant was exist'
+    },
+    TENANT_NOT_EXISTED: {
+        status: 400,
+        code: 'TENANT_NOT_EXISTED',
         message: 'Tenant does not exist'
     },
+
     TAG_NOT_FOUND: {
         status: 400,
         code: 'TAG_NOT_FOUND',

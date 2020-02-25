@@ -12,7 +12,7 @@ let options = {
         },
         produces: ['application/json'],
         consumes: ['application/json'],
-        basePath: '/api/auth',
+        basePath: '/api',
         schemes: ['http', 'https'],
         securityDefinitions: {
             JWT: {

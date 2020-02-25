@@ -1,7 +1,6 @@
 /**
- * @typedef UserData
+ * @typedef EmployeeData
  * @property {integer} id.required
- * @property {string} employeeId
  * @property {string} username
  * @property {string} fullName
  * @property {string} email
@@ -15,25 +14,25 @@
  */
 
 /**
- * @typedef GetUserByEmail
+ * @typedef GetEmployeeByEmail
  * @property {string} email
  */
 
 /**
- * @typedef getUserByEmployee
+ * @typedef getEmployee
  * @property {string} employeeId
  * @property {string} employeeName
  */
 
 /**
- * @typedef UpdateUserByEmailAndEmployee
+ * @typedef UpdateEmployeeByEmail
  * @property {string} email
  * @property {string} employeeId
  * @property {string} employeeName
  */
 
 /**
- * @typedef UserSearchParam
+ * @typedef EmployeeSearchParam
  * @property {Array.<SearchData>} search
  * @property {Array.<FilterData>} filter
  * @property {integer} page
@@ -42,22 +41,22 @@
  */
 
 /**
- * @typedef CreateUserParam
- * @property {UserData.model} user
- * @property {Array.<CompanyData>} userParentCompanies
+ * @typedef CreateEmployeeParam
+ * @property {EmployeeData.model} employee
+ * @property {Array.<CompanyData>} employeeParentCompanies
  * @property {Array.<RoleData>} roles
  */
 
 /**
- * @typedef UpdateUserParam
- * @property {UserData.model} user
- * @property {Array.<CompanyData>} userParentCompanies
+ * @typedef UpdateEmployeeParam
+ * @property {EmployeeData.model} employee
+ * @property {Array.<CompanyData>} employeeParentCompanies
  * @property {Array.<RoleData>} roles
  */
 
 /**
- * @typedef UserSearchData
- * @property {Array.<UserData>} rows
+ * @typedef EmployeeSearchData
+ * @property {Array.<EmployeeData>} rows
  * @property {integer} count
  * @property {integer} page
  * @property {integer} limit
@@ -65,14 +64,14 @@
  */
 
 /**
- * @typedef CreateUserData
+ * @typedef CreateEmployeeData
  * @property {integer} code
  * @property {string} message
  * @property {CreateUserParam.model} payload
  */
 
 /**
- * @typedef UpdateUserData
+ * @typedef UpdateEmployeeData
  * @property {integer} code
  * @property {string} message
  * @property {UpdateUserParam.model} payload

@@ -3,9 +3,6 @@
  * @property {integer} id.required
  * @property {integer} userId.required
  * @property {integer} parentCompanyId.required
- * @property {string} parentCompanyName
- * @property {integer} companyId.required
- * @property {string} companyName
  * @property {boolean} isDefaultCompany
  * @property {boolean} isDefaultLoginCompany
  * @property {boolean} isActive
