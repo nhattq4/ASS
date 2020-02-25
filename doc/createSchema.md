@@ -119,7 +119,14 @@ class Db {
                 Roles: require('../database/models/roles').init(sequelize),
                 UserRoles: require('../database/models/userroles').init(sequelize),
                 Users: require('../database/models/users').init(sequelize),
-                UserParentCompanies: require('../database/models/userparentcompanies').init(sequelize)
+                UserParentCompanies: require('../database/models/userparentcompanies').init(sequelize),
+                Products: require('../database/models/products').init(sequelize),
+                OrderDetail: require('../database/models/orderDetail').init(sequelize),
+                Orders: require('../database/models/orderDetail').init(sequelize),
+                ProductlnCategories: require('../database/models/productlnCategories').init(sequelize),
+                Categories: require('../database/models/categories').init(sequelize),
+                AttributeValueDecimal: require('../database/models/attributeValueDecimal').init(sequelize),
+                Attributes: require('../database/models/attributes').init(sequelize),
                 // add new schema in here
             };
 
