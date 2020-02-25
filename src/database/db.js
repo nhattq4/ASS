@@ -20,6 +20,16 @@ class Db {
                 EmployeeRoles: require('./models/employeeRoles').init(sequelize),
                 Employees: require('./models/employees').init(sequelize),
 
+                //Product
+                Products: require('./models/products').init(sequelize),
+                OrderDetail: require('./models/orderDetail').init(sequelize),
+                Orders: require('./models/orders').init(sequelize),
+                ProductlnCategories: require('./models/productlnCategories').init(sequelize),
+                Categories: require('./models/categories').init(sequelize),
+                AttributeValueDecimal: require('./models/attributeValueDecimal').init(sequelize),
+
+                //Attributes
+                Attributes: require('./models/attributes').init(sequelize),
             };
 
             // Create relationships in the ORM
