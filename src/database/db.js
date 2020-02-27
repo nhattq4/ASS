@@ -12,8 +12,7 @@ class Db {
             // Init models
             const models = {
                 //Companies
-                EmployeeCompanies: require('./models/employeeCompanies').init(sequelize),
-                Company: require('./models/company').init(sequelize),
+                Companies: require('./models/companies').init(sequelize),
 
                 //employee
                 Roles: require('./models/roles').init(sequelize),

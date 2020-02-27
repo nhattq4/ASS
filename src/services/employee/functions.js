@@ -2,7 +2,6 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const Db = require('../../database/db');
 const Employees = require('../../database/models/employees');
-const EmployeeCompanies = require('../../database/models/employeeCompanies');
 const EmployeeRoles = require('../../database/models/employeeRoles');
 
 const _ = require('lodash');

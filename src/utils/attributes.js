@@ -1,30 +1,14 @@
 module.exports = {
-  PARENTCOMPANY: [
-    'id',
-    'name',
-    'letterhead',
-    'imgPath',
-    'isActive',
-    'isDeleted',
-    'createdBy',
-    'createdAt',
-    'updatedBy',
-    'updatedAt'
-  ],
   COMPANY: [
     'id',
-    'parentCompanyId',
     'code',
     'name',
     'letterhead',
-    'compRegistrationNo',
     'imgPath',
     'addressId',
     'officeTel1',
     'officeTel2',
     'email',
-    'isDefaultCompany',
-    'isDefaultLoginCompany',
     'isReactivate',
     'inactiveDatetime',
     'isDeleted',
@@ -34,9 +18,10 @@ module.exports = {
     'updatedBy',
     'updatedAt'
   ],
-  USER: [
+  EMPLOYEE: [
     'id',
-    'username',
+    'companyId',
+    'employeeCode',
     'password',
     'fullName',
     'email',
