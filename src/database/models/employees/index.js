@@ -13,6 +13,8 @@ module.exports = class Employees extends Sequelize.Model {
     }
 
     static associate(models) {
+        this.belongsTo(models.Companies, { foreignKey: 'companyId', targetKey: 'id' });
+
         this.belongsToMany(models.Roles, {
             through: models.EmployeeRoles,
             as: 'roles',

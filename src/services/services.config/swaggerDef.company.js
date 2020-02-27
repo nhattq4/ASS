@@ -1,11 +1,14 @@
 /**
  * @typedef CompanyData
- * @property {integer} id.required
- * @property {integer} userId.required
- * @property {integer} parentCompanyId.required
- * @property {boolean} isDefaultCompany
- * @property {boolean} isDefaultLoginCompany
- * @property {boolean} isActive
+ * @property {string} id.required
+ * @property {string} code.required
+ * @property {string} name.required
+ * @property {string} letterhead
+ * @property {string} imgPath
+ * @property {integer} addressId.required
+ * @property {string} officeTel1
+ * @property {string} officeTel2
+ * @property {string} email
  * @property {string} createdBy
  * @property {string} createdAt
  * @property {string} updatedBy

@@ -1,7 +1,9 @@
 /**
  * @typedef EmployeeData
- * @property {integer} id.required
- * @property {string} username
+ * @property {string} id.required
+ * @property {string} companyId.required
+ * @property {string} employeeCode.required
+ * @property {string} password
  * @property {string} fullName
  * @property {string} email
  * @property {string} contactNo

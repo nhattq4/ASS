@@ -1,4 +1,17 @@
 module.exports = {
+    /* Start: COMPANY MESSAGE*/
+    COMPANY_NOT_FOUND: {
+        status: 400,
+        code: 'COMPANY_NOT_FOUND',
+        message: 'Company does not exist'
+    },
+    COMPANY_WAS_EXISTED: {
+        status: 404,
+        code: 'COMPANY_WAS_EXISTED',
+        message: 'Tenant was exist'
+    },
+    /* End: COMPANY MESSAGE*/
+
     TENANT_WAS_EXISTED: {
         status: 404,
         code: 'TENANT_NOT_FOUND',
@@ -9,7 +22,6 @@ module.exports = {
         code: 'TENANT_NOT_EXISTED',
         message: 'Tenant does not exist'
     },
-
     TAG_NOT_FOUND: {
         status: 400,
         code: 'TAG_NOT_FOUND',
@@ -100,9 +112,5 @@ module.exports = {
         code: 'DUPLICATE_EMAIL',
         message: 'Email is not unique.'
     },
-    COMPANY_NOT_FOUND: {
-        status: 404,
-        code: 'COMPANY_NOT_FOUND',
-        message: 'Company does not exist'
-    }
+
 };

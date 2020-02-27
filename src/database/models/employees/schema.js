@@ -6,6 +6,9 @@ module.exports = () => {
             type: Sequelize.STRING(250),
             primaryKey: true,
         },
+        companyId: {
+            type: Sequelize.STRING(250),
+        },
         employeeCode: {
             type: Sequelize.STRING(50)
         },

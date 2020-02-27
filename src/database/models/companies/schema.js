@@ -6,34 +6,44 @@ module.exports = () => {
             type: Sequelize.STRING(250),
             primaryKey: true,
         },
-        employeeId: {
-            type: Sequelize.INTEGER(11),
-            allowNull: false
+        code: {
+            type: Sequelize.STRING(15)
         },
-        parentCompanyId: {
-            type: Sequelize.INTEGER(11),
-            allowNull: false
+        name: {
+            type: Sequelize.STRING(100)
         },
-        companyId: {
-            type: Sequelize.INTEGER(11),
-            allowNull: false,
-            unique: true
+        letterhead: {
+            type: Sequelize.STRING(25)
         },
-        isDefaultCompany: {
+        imgPath: {
+            type: Sequelize.STRING(150),
+        },
+        addressId: {
+            type: Sequelize.INTEGER(11),
+        },
+        officeTel1: {
+            type: Sequelize.STRING(25)
+        },
+        officeTel2: {
+            type: Sequelize.STRING(25)
+        },
+        email: {
+            type: Sequelize.STRING(45)
+        },
+        isReactivate: {
             type: Sequelize.TINYINT(1),
             defaultValue: 0
         },
-        isDefaultLoginCompany: {
+        inactiveDatetime: {
+            type: Sequelize.DATE
+        },
+        isDeleted: {
             type: Sequelize.TINYINT(1),
             defaultValue: 0
         },
         isActive: {
             type: Sequelize.TINYINT(1),
             defaultValue: 1
-        },
-        isDelete: {
-            type: Sequelize.TINYINT(1),
-            defaultValue: 0
         },
         createdBy: {
             type: Sequelize.STRING(20)
