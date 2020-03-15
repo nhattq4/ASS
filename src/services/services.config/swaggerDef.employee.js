@@ -45,7 +45,6 @@
 /**
  * @typedef CreateEmployeeParam
  * @property {EmployeeData.model} employee
- * @property {Array.<CompanyData>} employeeParentCompanies
  * @property {Array.<RoleData>} roles
  */
 
