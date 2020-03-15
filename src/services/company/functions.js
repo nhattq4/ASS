@@ -95,7 +95,6 @@ createCompany = async (request, response, next) => {
 
 
 //Private method
-
 let validate = async (type, data) => {
 	var fields = [
 		data.code,
