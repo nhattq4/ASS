@@ -17,14 +17,14 @@ router.post('/search', (req, res, next) => functions.search(req, res, next).catc
 /**
  * Created employee object.
  *
- * @route POST /employee/create
+ * @route POST /employee/create-employee
  * @operationId create
  * @group Employee - Operations about employee
- * @param {CreateEmployeeParam.model} requestModel.body.required - Created employee object
- * @returns {CreateEmployeeData.model} 200 - successful with newly created entity, in payload object
+ * @param {EmployeeData.model} requestModel.body.required - Created employee object
+ * @returns {EmployeeData.model} 200 - successful with newly created entity, in payload object
  * @returns {Error.model} 400 - Bad request
  */
-router.post('/create', (req, res, next) => functions.create(req, res, next).catch(error => next(error)));
+router.post('/create-employee', (req, res, next) => functions.create(req, res, next).catch(error => next(error)));
 
 /**
  * Updated employee object.
